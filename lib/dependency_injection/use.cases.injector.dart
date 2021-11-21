@@ -14,7 +14,10 @@ class UseCasesInjector implements DependencyInjectionInjector {
   T get<T extends Object>({String? instanceName}) => _getIt.get<T>();
 
   @override
-  Future<void> register(
+  Future<void> register() async {}
+
+  @override
+  Future<void> registerWithDependecy(
       {required T Function<T extends Object>({
         String? instanceName,
       })

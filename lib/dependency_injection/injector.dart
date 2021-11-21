@@ -25,10 +25,10 @@ class Injector {
     required DependencyInjectionInjector analytics,
   }) async {
     if (_instance == null) {
-      await dependencies.register(dependency: _dependency);
-      await repositories.register(dependency: dependencies.get);
-      await useCases.register(dependency: repositories.get);
-      await analytics.register(dependency: dependencies.get);
+      await dependencies.register();
+      await repositories.registerWithDependecy(dependency: dependencies.get);
+      await useCases.registerWithDependecy(dependency: repositories.get);
+      await analytics.registerWithDependecy(dependency: dependencies.get);
 
       _instance = Injector._(
         dependencies: dependencies,
@@ -39,13 +39,17 @@ class Injector {
     }
   }
 
-  static T _dependency<T extends Object>({String? instanceName}) =>
-      throw UnimplementedError();
-
   static Injector get instance => _instance!;
 
-  T dependency<T extends Object>() => _dependencies.get<T>();
-  T repository<T extends Object>() => _repositories.get<T>();
-  T useCase<T extends Object>() => _useCases.get<T>();
-  T analytics<T extends Object>() => _analytics.get<T>();
+  T dependency<T extends Object>({String? instanceName}) =>
+      _dependencies.get<T>(instanceName: instanceName);
+
+  T repository<T extends Object>({String? instanceName}) =>
+      _repositories.get<T>(instanceName: instanceName);
+
+  T useCase<T extends Object>({String? instanceName}) =>
+      _useCases.get<T>(instanceName: instanceName);
+
+  T analytics<T extends Object>({String? instanceName}) =>
+      _analytics.get<T>(instanceName: instanceName);
 }
