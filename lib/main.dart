@@ -87,7 +87,7 @@ class GetIt {
     String? instanceName,
   }) {}
 
-  T get<T>() => throw UnimplementedError();
+  T get<T>({String? instanceName}) => throw UnimplementedError();
 }
 
 class Firebase {}

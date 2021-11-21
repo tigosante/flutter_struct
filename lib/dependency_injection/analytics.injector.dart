@@ -10,7 +10,8 @@ class AnalyticsInjector implements DependencyInjectionInjector {
   final GetIt _getIt;
 
   @override
-  T get<T extends Object>({String? instanceName}) => _getIt.get<T>();
+  T get<T extends Object>({String? instanceName}) =>
+      _getIt.get<T>(instanceName: instanceName);
 
   @override
   Future<void> register() async {}
