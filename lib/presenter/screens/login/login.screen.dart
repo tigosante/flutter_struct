@@ -6,8 +6,8 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
   final _controller = LoginController(
-    userUseCase: Injector.instance.useCase(),
-    analytics: Injector.instance.analytics(),
+    userUseCase: Injector.useCase(),
+    analytics: Injector.analytics(),
   );
 
   @override

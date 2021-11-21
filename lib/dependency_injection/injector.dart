@@ -1,22 +1,12 @@
 import 'package:flutter_struct/contracts/dependency.injection.injector.dart';
 
-class Injector {
-  Injector._({
-    required DependencyInjectionInjector dependencies,
-    required DependencyInjectionInjector repositories,
-    required DependencyInjectionInjector useCases,
-    required DependencyInjectionInjector analytics,
-  })  : _dependencies = dependencies,
-        _repositories = repositories,
-        _useCases = useCases,
-        _analytics = analytics;
+abstract class Injector {
+  Injector._();
 
-  final DependencyInjectionInjector _dependencies;
-  final DependencyInjectionInjector _repositories;
-  final DependencyInjectionInjector _useCases;
-  final DependencyInjectionInjector _analytics;
-
-  static late final Injector? _instance;
+  static late final DependencyInjectionInjector? _dependencies;
+  static late final DependencyInjectionInjector? _repositories;
+  static late final DependencyInjectionInjector? _useCases;
+  static late final DependencyInjectionInjector? _analytics;
 
   static Future<void> init({
     required DependencyInjectionInjector dependencies,
@@ -24,32 +14,14 @@ class Injector {
     required DependencyInjectionInjector useCases,
     required DependencyInjectionInjector analytics,
   }) async {
-    if (_instance == null) {
-      await dependencies.register();
-      await repositories.registerWithDependecy(dependency: dependencies.get);
-      await useCases.registerWithDependecy(dependency: repositories.get);
-      await analytics.registerWithDependecy(dependency: dependencies.get);
-
-      _instance = Injector._(
-        dependencies: dependencies,
-        repositories: repositories,
-        useCases: useCases,
-        analytics: analytics,
-      );
-    }
+    if (_dependencies == null) await dependencies.register();
+    if (_repositories == null) await repositories.registerWithDependecy(dependency: dependencies.get);
+    if (_useCases == null) await useCases.registerWithDependecy(dependency: repositories.get);
+    if (_analytics == null) await analytics.registerWithDependecy(dependency: dependencies.get);
   }
 
-  static Injector get instance => _instance!;
-
-  T dependency<T extends Object>({String? instanceName}) =>
-      _dependencies.get<T>(instanceName: instanceName);
-
-  T repository<T extends Object>({String? instanceName}) =>
-      _repositories.get<T>(instanceName: instanceName);
-
-  T useCase<T extends Object>({String? instanceName}) =>
-      _useCases.get<T>(instanceName: instanceName);
-
-  T analytics<T extends Object>({String? instanceName}) =>
-      _analytics.get<T>(instanceName: instanceName);
+  static T dependency<T extends Object>({String? instanceName}) => _dependencies!.get<T>(instanceName: instanceName);
+  static T repository<T extends Object>({String? instanceName}) => _repositories!.get<T>(instanceName: instanceName);
+  static T useCase<T extends Object>({String? instanceName}) => _useCases!.get<T>(instanceName: instanceName);
+  static T analytics<T extends Object>({String? instanceName}) => _analytics!.get<T>(instanceName: instanceName);
 }
