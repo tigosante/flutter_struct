@@ -1,4 +1,4 @@
-import 'package:flutter_struct/contracts/dependency_injection/dependency.injection.injector.dart';
+import 'package:flutter_struct/contracts/dependency.injection.injector.dart';
 import 'package:flutter_struct/main.dart';
 
 class DependenciesInjector implements DependencyInjectionInjector {

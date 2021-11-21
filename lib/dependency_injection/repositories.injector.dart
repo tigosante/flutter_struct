@@ -1,5 +1,5 @@
-import 'package:flutter_struct/contracts/dependency_injection/dependency.injection.injector.dart';
-import 'package:flutter_struct/contracts/repositories/user.repository.dart';
+import 'package:flutter_struct/contracts/dependency.injection.injector.dart';
+import 'package:flutter_struct/contracts/user.repository.dart';
 import 'package:flutter_struct/data_source/repositories/user.repository.local.dart';
 import 'package:flutter_struct/data_source/repositories/user.repository.remote.dart';
 import 'package:flutter_struct/main.dart';

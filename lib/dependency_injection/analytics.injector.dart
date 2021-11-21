@@ -1,5 +1,5 @@
 import 'package:flutter_struct/analytics/analytics.imports.dart';
-import 'package:flutter_struct/contracts/dependency_injection/dependency.injection.injector.dart';
+import 'package:flutter_struct/contracts/dependency.injection.injector.dart';
 import 'package:flutter_struct/main.dart';
 
 class AnalyticsInjector implements DependencyInjectionInjector {

@@ -1,5 +1,5 @@
-import 'package:flutter_struct/contracts/repositories/user.repository.dart';
-import 'package:flutter_struct/contracts/use_cases/user.use.case.dart';
+import 'package:flutter_struct/contracts/user.repository.dart';
+import 'package:flutter_struct/contracts/user.use.case.dart';
 
 class UserUseCaseMain implements UserUseCase {
   UserUseCaseMain({

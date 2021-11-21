@@ -1,6 +1,6 @@
-import 'package:flutter_struct/contracts/dependency_injection/dependency.injection.injector.dart';
-import 'package:flutter_struct/contracts/use_cases/user.use.case.dart';
-import 'package:flutter_struct/data_source/use_case/user.use.case.main.dart';
+import 'package:flutter_struct/contracts/dependency.injection.injector.dart';
+import 'package:flutter_struct/contracts/user.use.case.dart';
+import 'package:flutter_struct/data_source/use_cases/user.use.case.main.dart';
 import 'package:flutter_struct/main.dart';
 
 class UseCasesInjector implements DependencyInjectionInjector {
